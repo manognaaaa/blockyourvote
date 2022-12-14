@@ -1,6 +1,6 @@
 import { get } from "http";
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Table,Container, Row, Col, Button } from "react-bootstrap";
 //Simport LoadingCircles from "../assets/loadingcircles.svg";
 
 const ShowResults = (props) => {
@@ -10,14 +10,12 @@ const ShowResults = (props) => {
   const [candidate2URL, changeCandidate2Url] = useState(
     "https://cdn2.iconfinder.com/data/icons/material-line-thin/1024/option-256.png"
   );
-  const [candidate3URL, changeCandidate3Url] = useState(
-    "https://cdn2.iconfinder.com/data/icons/material-line-thin/1024/option-256.png"
-  );
+  const candidateName1 = useState("Candidate 1");
+  const candidateName2 = useState("Candidate 2");
   const [showresults, changeResultsDisplay] = useState(false);
   const [buttonStatus, changeButtonStatus] = useState(false);
   const [candidate1Votes, changeVote1] = useState(0);
   const [candidate2Votes, changeVote2] = useState(0);
-  const [candidate3Votes, changeVote3] = useState(0);
   const [prompt, changePrompt] = useState("--");
 
   const contractId = process.env.CONTRACT_NAME;
@@ -38,7 +36,6 @@ const ShowResults = (props) => {
       console.log(voteCount);
       changeVote1(voteCount[0]);
       changeVote2(voteCount[1]);
-      changeVote3(voteCount[2]);
 
       // // image stuff
       console.log(
@@ -58,12 +55,6 @@ const ShowResults = (props) => {
         await props.viewMethod("getUrl", {
           prompt: localStorage.getItem("prompt"),
           name: localStorage.getItem("Candidate2"),
-        })
-      );
-      changeCandidate3Url(
-        await props.viewMethod("getUrl", {
-          prompt: localStorage.getItem("prompt"),
-          name: localStorage.getItem("Candidate3"),
         })
       );
 
@@ -108,7 +99,6 @@ const ShowResults = (props) => {
       .then((voteCount) => {
         changeVote1(voteCount[0]);
         changeVote2(voteCount[1]);
-        changeVote3(voteCount[2]);
         console.log(voteCount);
       });
 
@@ -119,197 +109,28 @@ const ShowResults = (props) => {
 
   return (
     <Container>
-      <Row>
-        <Col className='jutify-content-center d-flex' style={{ width: "20vw" }}>
-          <Container>
-            <Row style={{ marginTop: "5vh", backgroundColor: "#c4c4c4" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "3vw",
-                }}
-              >
-                <img
-                  style={{
-                    height: "35vh",
-                    width: "20vw",
-                  }}
-                  src={candidate1URL}
-                ></img>
-              </div>
-            </Row>
-
-            {showresults ? (
-              <Row
-                className='justify-content-center d-flex'
-                style={{ marginTop: "5vh" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: "8vw",
-                    padding: "10px",
-                    backgroundColor: "#c4c4c4",
-                  }}
-                >
-                  {candidate1Votes}
-                </div>
-              </Row>
-            ) : null}
-
-            <Row
-              style={{ marginTop: "5vh" }}
-              className='justify-content-center d-flex'
-            >
-              <Button disabled={buttonStatus} onClick={() => addVote(0)}>
-                Vote
-              </Button>
-            </Row>
-          </Container>
-        </Col>
-
-        <Col
-          className='justify-content-center d-flex align-items-center'
-          style={{ width: "10vw" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "#c4c4c4",
-              height: "20vh",
-              alignItems: "center",
-              padding: "2vw",
-              textAlign: "center",
-            }}
-          >
-            {prompt}
-          </div>
-        </Col>
-
-        <Col className='jutify-content-center d-flex' style={{ width: "20vw" }}>
-          <Container>
-            <Row style={{ marginTop: "5vh", backgroundColor: "#c4c4c4" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "3vw",
-                }}
-              >
-                <img
-                  style={{
-                    height: "35vh",
-                    width: "20vw",
-                  }}
-                  src={candidate2URL}
-                ></img>
-              </div>
-            </Row>
-
-            {showresults ? (
-              <Row
-                className='justify-content-center d-flex'
-                style={{ marginTop: "5vh" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: "8vw",
-                    padding: "10px",
-                    backgroundColor: "#c4c4c4",
-                  }}
-                >
-                  {candidate2Votes}
-                </div>
-              </Row>
-            ) : null}
-
-            <Row
-              style={{ marginTop: "5vh" }}
-              className='justify-content-center d-flex'
-            >
-              <Button disabled={buttonStatus} onClick={() => addVote(1)}>
-                Vote
-              </Button>
-            </Row>
-
-            <Col className='jutify-content-center d-flex' style={{ width: "20vw" }}>
-            <Container>
-            <Row style={{ marginTop: "5vh", backgroundColor: "#c4c4c4" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  padding: "3vw",
-                }}
-              >
-                <img
-                  style={{
-                    height: "35vh",
-                    width: "20vw",
-                  }}
-                  src={candidate3URL}
-                ></img>
-              </div>
-            </Row>
-
-            {showresults ? (
-              <Row
-                className='justify-content-center d-flex'
-                style={{ marginTop: "5vh" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: "8vw",
-                    padding: "10px",
-                    backgroundColor: "#c4c4c4",
-                  }}
-                >
-                  {candidate3Votes}
-                </div>
-              </Row>
-            ) : null}
-
-            <Row
-              style={{ marginTop: "5vh" }}
-              className='justify-content-center d-flex'
-            >
-              <Button disabled={buttonStatus} onClick={() => addVote()}>
-                Vote
-              </Button>
-            </Row>
-          </Container>
-        </Col>
-
-        <Col
-          className='justify-content-center d-flex align-items-center'
-          style={{ width: "10vw" }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              backgroundColor: "#c4c4c4",
-              height: "20vh",
-              alignItems: "center",
-              padding: "2vw",
-              textAlign: "center",
-            }}
-          >
-            {prompt}
-          </div>
-        </Col>
-
-          </Container>
-        </Col>
-      </Row>
+      <Row style={{fontSize: "25px"}}><center><b>{prompt} results</b></center></Row>
+      <Table style={{ margin: "5vh" }} striped bordered hover>
+        <thead>
+          <tr>
+            <th>Candidate</th>
+            <th>Vote Count</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th>{candidateName1}</th>
+            <th>{candidate1Votes}</th>
+          </tr>
+          <tr>
+            <th>{candidateName2}</th>
+            <th>{candidate2Votes}</th>
+          </tr>
+        </tbody>
+      </Table>  
+      {/* <Row style={{fontSize: "25px"}}><center><b>Candidate 1 won!</b></center></Row>     */}
     </Container>
+    
   );
 };
 

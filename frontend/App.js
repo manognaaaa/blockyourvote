@@ -14,18 +14,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/global.css";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Button, Card, Modal} from "react-bootstrap";
 import ReactDOM from "react-dom";
-
 
 //Components
 import Home from "./Components/Home";
 import NewPoll from "./Components/NewPoll";
 import PollingStation from "./Components/PollingStation";
 import AdminLogin from "./Components/AdminLogin";
-import ShowResult from './Components/ShowResult';
+import ShowResult from "./Components/ShowResult";
+import UserLogin from "./Components/UserLogin";
+import Comingsoon from "./Components/Comingsoon";
+import Homepage from "./Components/Homepage";
 
 export default function App({ isSignedIn, contractId, wallet}) {
   const callMethod = async (methodName, args = {}) => {
@@ -92,14 +95,28 @@ export default function App({ isSignedIn, contractId, wallet}) {
           ></Route>
 
           <Route
-            path='/AdminLogin'
-            component={
-              <AdminLogin
+            path='/adminlogin'
+            element={<AdminLogin/>}
+          ></Route>
+
+          <Route
+            path='/showresult'
+            element={<ShowResult
               wallet={wallet}
               callMethod={callMethod}
               viewMethod={viewMethod}
-              />
-            }
+            />}
+          ></Route>
+
+          <Route
+            path='/userlogin'
+            element={<UserLogin
+              />}
+          ></Route>
+
+          <Route
+            path='/comingsoon'
+            element={<Comingsoon/>}
           ></Route>
 
         </Routes>
@@ -145,14 +162,14 @@ export default function App({ isSignedIn, contractId, wallet}) {
       <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
         {console.log(isSignedIn)}
         <Container>
-          <Navbar.Brand href='/'>
+          <Navbar.Brand href='/userlogin'>
             <img src={require('./assets/logo.png')} width="70" height="70"></img>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='mx-auto'></Nav>
             <Nav>
-              <Nav.Link disabled={!isSignedIn} href='/AdminLogin'>
+              <Nav.Link disabled={!isSignedIn} href='/adminlogin'>
                 New Poll
               </Nav.Link>
               <Nav.Link onClick={isSignedIn ? signOutFun : signInFun}>

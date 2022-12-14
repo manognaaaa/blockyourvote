@@ -14,8 +14,13 @@ class VotingContract {
   candidatePair = new UnorderedMap<string[]>("candidate_pair");
   // Prompt Set Was used to in an effort to keep track of keys for the candidatePair Unordered Map
   promptSet = new UnorderedSet<string>("promptArray");
+  // Used to store votes
   voteArray = new UnorderedMap<number[]>("voteArray");
+  // Used to check every user's participation
   userParticipation = new UnorderedMap<string[]>("user Participation ");
+  // Stores voter details
+  voters = new UnorderedMap<string[]>("voters");
+
 
   // Writing View Methods
 
@@ -58,6 +63,8 @@ class VotingContract {
     return [candidateUrlArray[0], candidateUrlArray[1]];
   }
 
+  
+
   @call({})
   addCandidatePair({
     prompt,
@@ -74,7 +81,7 @@ class VotingContract {
   }) {
     this.candidatePair.set(prompt, [name1, url1, name2, url2]);
   }
-
+  
 
   @call({})
   initializeVotes({ prompt }: { prompt: string }) {

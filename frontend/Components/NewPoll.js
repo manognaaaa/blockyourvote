@@ -4,19 +4,15 @@ import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
 const NewPoll = (props) => {
   const candidateName1 = useRef();
   const candidateName2 = useRef();
-  const candidateName3 = useRef();
 
   const candidateName1URL = useRef();
   const candidateName2URL = useRef();
-  const candidateName3URL = useRef();
 
   const candidateAge1 = useRef();
   const candidateAge2 = useRef();
-  const candidateAge3 = useRef();
 
   const candidateP1 = useRef();
   const candidateP2 = useRef();
-  const candidateP3 = useRef();
 
   const promptRef = useRef();
 
@@ -163,15 +159,17 @@ const NewPoll = (props) => {
           </Card>
         </Col>
       </Row>
-
       <Row style={{ marginTop: "10vh" }}>
-        <Button
+        <center>
+        <button style={{width:"250px"}}
           disabled={disableButton}
           onClick={sendToBlockChain}
           variant='primary'
         >
           Submit
-        </Button>
+        </button>
+        </center>
+        
         {/* async callMethod({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = NO_DEPOSIT }) {
     // Sign a transaction with the "FunctionCall" action
     return await this.wallet.signAndSendTransaction({

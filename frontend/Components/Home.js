@@ -35,6 +35,8 @@ const Home = (props) => {
 
   return (
     <Container>
+      <Row style={{fontSize: "25px"}}><center><b>Welcome to BlockYourVote!</b></center></Row>
+      <Row style={{fontSize: "15px"}}><center><i>Remember to choose your vote properly, you only get to vote once :)</i></center></Row>
       <Table style={{ margin: "5vh" }} striped bordered hover>
         <thead>
           <tr>
@@ -54,17 +56,17 @@ const Home = (props) => {
                   <td>{el}</td>
                   <td>
                     {" "}
-                    <Button onClick={() => props.changeCandidates(el)}>
+                    <button onClick={() => props.changeCandidates(el)}>
                       Go to Poll
                       {console.log(el)}
-                    </Button>
+                    </button>
                   </td>
                   <td>
                     {" "}
-                    <Button onClick={() => props.checkResults(el)}>
+                    <button onClick={() => props.checkResults(el)}>
                        Check Results
                       {console.log(el)}
-                    </Button>
+                    </button>
                   </td>
                 </tr>
               );
@@ -76,18 +78,6 @@ const Home = (props) => {
           })}
         </tbody>
       </Table>
-      <Row>
-        <Button
-          style={{
-            width: "20vh",
-            marginLeft: "10vh",
-          }}
-          onClick={clearPolls}
-        >
-          {" "}
-          Clear Polls
-        </Button>{" "}
-      </Row>
     </Container>
   );
 };

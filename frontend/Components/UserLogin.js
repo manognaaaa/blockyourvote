@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form} from "react-bootstrap";
 
 
-function AdminLogin() {
+function UserLogin() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -11,36 +11,44 @@ function AdminLogin() {
   // User Login info
   const database = [
     {
-      username: "admin",
-      password: "admin@123"
+      voterid:"19BCN7188",
+      voter:"Manogna"
+    },
+    {
+      voterid:"19BCN7283",
+      voter:"Kinshuk"
+    },
+    {
+      voterid:"19BCE7411",
+      voter:"Navin"
     }
   ];
 
   const errors = {
-    uname: "User not found",
-    pass: "Invalid Password"
+    vid: "User not found",
+    vname: "Name doesn't match our records"
   };
 
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
+    var { vid,vname} = document.forms[0];
 
     // Find user login info
-    const userData = database.find((user) => user.username === uname.value);
+    const userData = database.find((user) => user.voterid === vid.value);
 
     // Compare user info
     if (userData) {
-      if (userData.password !== pass.value) {
+      if (userData.voter !== vname.value) {
         // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
+        setErrorMessages({ name: "vname", message: errors.vname });
       } else {
         setIsSubmitted(true);
       }
     } else {
       // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+      setErrorMessages({ name: "vid", message: errors.vid });
     }
   };
 
@@ -53,15 +61,15 @@ function AdminLogin() {
   // JSX code for login form
   const renderForm = (
     <div className="form">
-      <div className="title">Sign In</div>
+      <div className="title">Voter Login</div>
       <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <input type="text" name="uname" placeholder="Username" required />
-          {renderErrorMessage("uname")}
+      <div className="input-container">
+          <input type="text" name="vid" placeholder="Voter Identification Number" required />
+          {renderErrorMessage("vid")}
         </div>
         <div className="input-container">
-          <input type="password" name="pass" placeholder="Password" required />
-          {renderErrorMessage("pass")}
+          <input type="text" name="vname" placeholder="Name" required />
+          {renderErrorMessage("vname")}
         </div>
         <div className="button-container">
           <input type="submit" />
@@ -78,10 +86,7 @@ function AdminLogin() {
           <br></br>
           <br></br>
           <button>
-          <a href="/newpoll" style={{fontSize: "14px"}}>Create a new poll</a>
-          </button>
-          <button>
-          <a href="/comingsoon" style={{fontSize: "14px"}}>Add voters</a>
+          <a href="/" style={{fontSize: "14px"}}>Proceed to vote</a>
           </button>
         </div> : renderForm}
       </div>
@@ -89,4 +94,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default UserLogin;

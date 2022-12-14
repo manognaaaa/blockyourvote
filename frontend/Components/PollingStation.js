@@ -1,6 +1,6 @@
 import { get } from "http";
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 // import LoadingCircles from "../assets/loadingcircles.svg";
 
 const PollingStation = (props) => {
@@ -107,19 +107,20 @@ const PollingStation = (props) => {
   return (
     <Container>
       <br></br>
-      <Row style={{fontSize: "35px"}}><center><b>{prompt}</b></center></Row>
-      <p>---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-      </p>
-      <br></br>
+      <center>
+      <Row style={{fontSize: "25px"}}><center><b>{prompt}</b></center></Row>
+        <br></br>
       <Row>
         <Col className='jutify-content-center d-flex' style={{ width: "20vw" }}>
-          <Container>
-          <p style={{fontFamily: "sans-serif", fontSize: "30px", color: "black"}}>Candidate 1</p>
+          <Card>
+            <Card.Body>
+            <center>
+          <Container style={{marginRight:"50px"}}>
+            <p style={{fontFamily: "sans-serif", fontSize: "20px", color: "black"}}>Candidate 1</p>
             <Row style={{ marginTop: "5vh", backgroundColor: "#c4c4c4"}}>
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "left",
                   padding: "3vw",
                 }}
               >
@@ -128,49 +129,39 @@ const PollingStation = (props) => {
                   style={{
                     height: "35vh",
                     width: "20vw",
+                    alignItems: "center",
                   }}
                   src={candidate1URL}
                 ></img>
                 
               </div>
             </Row>
-            {showresults ? (
-              <Row
-                className='justify-content-center d-flex'
-                style={{ marginTop: "5vh" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: "8vw",
-                    padding: "10px",
-                    backgroundColor: "#c4c4c4",
-                  }}
-                >
-                  {candidate1Votes}
-                </div>
-              </Row>
-            ) : null}
             <Row
               style={{ marginTop: "5vh" }}
               className='justify-content-center d-flex'
             >
-              <Button disabled={buttonStatus} onClick={() => addVote(0)}>
+              <button style={{width:"250px"}}
+              disabled={buttonStatus} onClick={() => addVote(0)}>
                 Vote
-              </Button>
+              </button>
             </Row>
           </Container>
-        </Col>
+          </center>
+            </Card.Body>
+          </Card>
         
+        </Col>
+        <Col></Col>
         <Col className='jutify-content-center d-flex' style={{ width: "20vw" }}>
-          <Container>
-          <p style={{fontFamily: "sans-serif", fontSize: "30px", color: "black"}}>Candidate 2</p>
+        <Card>
+            <Card.Body>
+            <center>
+          <Container style={{marginRight:"50px"}}>
+            <p style={{fontFamily: "sans-serif", fontSize: "20px", color: "black"}}>Candidate 2</p>
             <Row style={{ marginTop: "5vh", backgroundColor: "#c4c4c4"}}>
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "left",
                   padding: "3vw",
                 }}
               >
@@ -178,40 +169,29 @@ const PollingStation = (props) => {
                   style={{
                     height: "35vh",
                     width: "20vw",
+                    alignItems: "center",
                   }}
                   src={candidate2URL}
                 ></img>
               </div>
             </Row>
-            {showresults ? (
-              <Row
-                className='justify-content-center d-flex'
-                style={{ marginTop: "5vh" }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    fontSize: "8vw",
-                    padding: "10px",
-                    backgroundColor: "#c4c4c4",
-                  }}
-                >
-                  {candidate2Votes}
-                </div>
-              </Row>
-            ) : null}
             <Row
               style={{ marginTop: "5vh" }}
               className='justify-content-center d-flex'
             >
-              <Button disabled={buttonStatus} onClick={() => addVote(1)}>
+              <button style={{width:"250px"}}
+              disabled={buttonStatus} onClick={() => addVote(1)}>
                 Vote
-              </Button>
+              </button>
             </Row>
           </Container>
+          </center>
+            </Card.Body>
+          </Card>
+        
         </Col>
       </Row>
+      </center>
     </Container>
   );
 };

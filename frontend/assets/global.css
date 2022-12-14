@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 * {
-  box-sizing: border-box;
-  background-color: #1e1e1e;
+  /* box-sizing: border-box; */
+  background-color: #1e1e1e !important;
+  font-family: 'Raleway', sans-serif !important;
+  /* font-size: 20px ; */
+  color: #e6e6e6 !important;
 }
 
 html {
-  --bg: #efefef;
-  --fg: #1e1e1e;
+  --bg: #1e1e1e;;
+  --fg: #ffffff;
   --gray: #555;
   --light-gray: #ccc;
   --shadow: #e6e6e6;
@@ -13,10 +17,10 @@ html {
   --primary: #FF585D;
   --secondary: #0072CE;
 
-  background-color: var(--fg);
-  color: var(--bg);
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  font-size: calc(0.9em + 0.5vw);
+  background-color: var(--bg);
+  /* color: var(--fg);
+  font-family: 'Raleway', sans-serif !important;
+  font-size: 20px; */
   line-height: 1.3;
 }
 .center {
@@ -33,6 +37,10 @@ body {
 main {
   margin: 0 auto;
   max-width: 26em;
+}
+
+.navbar{
+  background-color: #1e1e1e !important; /* override background image gradient w/ flat color */
 }
 
 main.please-wait {
@@ -138,16 +146,16 @@ main.please-wait .change button span {
   visibility: hidden;
 }
 button {
-  background-color: var(--secondary);
-  border-radius: 5px;
-  border: none;
+  border-radius: 50px !important; 
+  border: 1px solid #7200B8;
   color: #efefef;
   cursor: pointer;
   padding: 0.3em 0.75em;
   transition: transform 30ms;
+  margin-right: 10px;
 }
 button:hover, button:focus {
-  box-shadow: 0 0 10em rgba(255, 255, 255, 0.2) inset;
+  box-shadow: 0 4px 8px 0 rgb(60, 58, 58), 0 6px 10px 0 rgba(50, 47, 47);
 }
 input {
   background-color: var(--light-gray);
@@ -162,7 +170,7 @@ input::selection {
   color: #efefef;
 }
 input:focus {
-  box-shadow: 0 0 10em rgba(0, 0, 0, 0.02) inset;
+  box-shadow: 0 4px 8px 0 rgb(60, 58, 58), 0 6px 10px 0 rgba(50, 47, 47);
 }
 
 code {
@@ -172,7 +180,9 @@ code {
 li {
   padding-bottom: 1em;
 }
-
+.card{
+  box-shadow: 0 4px 8px 0 rgb(60, 58, 58), 0 6px 10px 0 rgba(50, 47, 47);
+}
 @media (prefers-color-scheme: dark) {
   html {
     --bg: #1e1e1e;
@@ -185,7 +195,7 @@ li {
     background-image: url(./logo-white.svg);
   }
   input:focus {
-    box-shadow: 0 0 10em rgba(255, 255, 255, 0.02) inset;
+    box-shadow: 0 4px 8px 0 rgb(60, 58, 58), 0 6px 10px 0 rgba(50, 47, 47);
   }
 }
 
@@ -235,4 +245,76 @@ main.please-wait .loader:after{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* .app {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  background-color: #f8f9fd !important;
+} */
+
+input[type="text"],
+input[type="password"] {
+  height: 40px;
+  width: 280px;
+  border-radius: 50px;
+  border: 1px solid #7200B8;
+  text-align: center;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  border: 1px solid #B800A5;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+input[type="submit"]:hover {
+  background: #6cf0c2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: #1e1e1e;
+  padding: 10px 20px;
+  margin-left: 550px;
+  margin-top: 80px;
+  box-shadow: 0 4px 8px 0 rgb(60, 58, 58), 0 6px 10px 0 rgba(50, 47, 47);
+  width: 400px;
+  align-items: center;
+}
+
+.list-container {
+  display: flex;
+  border-radius: 50px;
+}
+
+.error {
+  color: var(--primary);
+  font-size: 12px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px;
+  font-size: 16px;
 }

@@ -28,7 +28,6 @@ import AdminLogin from "./Components/AdminLogin";
 import ShowResult from "./Components/ShowResult";
 import UserLogin from "./Components/UserLogin";
 import Comingsoon from "./Components/Comingsoon";
-import Homepage from "./Components/Homepage";
 
 export default function App({ isSignedIn, contractId, wallet}) {
   const callMethod = async (methodName, args = {}) => {

@@ -60,7 +60,7 @@ const Home = (props) => {
                     <td>
                       {" "}
                       <button onClick={() => props.changeCandidates(el)}>
-                        Go to Poll
+                        Vote now
                         {console.log(el)}
                       </button>
                     </td>

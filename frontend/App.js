@@ -28,6 +28,7 @@ import AdminLogin from "./Components/AdminLogin";
 import ShowResult from "./Components/ShowResult";
 import UserLogin from "./Components/UserLogin";
 import Comingsoon from "./Components/Comingsoon";
+import NewVoter from "./Components/NewVoter";
 
 export default function App({ isSignedIn, contractId, wallet}) {
   const callMethod = async (methodName, args = {}) => {
@@ -109,13 +110,17 @@ export default function App({ isSignedIn, contractId, wallet}) {
 
           <Route
             path='/userlogin'
-            element={<UserLogin
-              />}
+            element={<UserLogin/>}
           ></Route>
 
           <Route
             path='/comingsoon'
             element={<Comingsoon/>}
+          ></Route>
+
+          <Route
+            path='/newvoters'
+            element={<NewVoter/>}
           ></Route>
 
         </Routes>

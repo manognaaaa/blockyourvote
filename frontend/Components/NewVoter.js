@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form} from "react-bootstrap";
 
 
-function AdminLogin() {
+function NewVoter() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -53,8 +53,16 @@ function AdminLogin() {
   // JSX code for login form
   const renderForm = (
     <div className="form">
-      <div className="title">Sign In</div>
+      <div className="title">Voter Registeration</div>
       <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <input type="text" name="vid" placeholder="Voter Identification Number" required />
+          {renderErrorMessage("vid")}
+        </div>
+        <div className="input-container">
+          <input type="text" name="vname" placeholder="Name" required />
+          {renderErrorMessage("vname")}
+        </div>
         <div className="input-container">
           <input type="text" name="uname" placeholder="Username" required />
           {renderErrorMessage("uname")}
@@ -64,7 +72,7 @@ function AdminLogin() {
           {renderErrorMessage("pass")}
         </div>
         <div className="button-container">
-          <input type="submit" />
+          <input type="submit" value="Add voter"/>
         </div>
       </form>
     </div>
@@ -74,14 +82,11 @@ function AdminLogin() {
       <div className="adminlogin">
       <div className="login-form">
         {isSubmitted ? <div>
-          User access authorized!
+            Voter successfully added!
           <br></br>
           <br></br>
           <button>
-          <a href="/newpoll" style={{fontSize: "14px"}}>Create a new poll</a>
-          </button>
-          <button>
-          <a href="/newvoters" style={{fontSize: "14px"}}>Add voters</a>
+          <a href="/comingsoon" style={{fontSize: "14px"}}>Check Voter Database</a>
           </button>
         </div> : renderForm}
       </div>
@@ -89,4 +94,4 @@ function AdminLogin() {
   );
 }
 
-export default AdminLogin;
+export default NewVoter;

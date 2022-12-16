@@ -1,6 +1,6 @@
 import { Near } from "near-api-js";
 import React, { useEffect, useState } from "react";
-import { Table, Container, Button, Row } from "react-bootstrap";
+import { Table, Container, Button, Row, Card } from "react-bootstrap";
 let contractId = process.env.CONTRACT_NAME;
 console.log(contractId);
 
@@ -37,47 +37,52 @@ const Home = (props) => {
     <Container>
       <Row style={{fontSize: "25px"}}><center><b>Welcome to BlockYourVote!</b></center></Row>
       <Row style={{fontSize: "15px"}}><center><i>Remember to choose your vote properly, you only get to vote once :)</i></center></Row>
-      <Table style={{ margin: "5vh" }} striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>List of Polls</th>
-            <th>Go to Poll</th>
-            <th>Check Results</th>
-          </tr>
-        </thead>
-        <tbody>
-          {promptList.map((el, index) => {
-            console.log(promptList);
-            if (promptList) {
-              return (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{el}</td>
-                  <td>
-                    {" "}
-                    <button onClick={() => props.changeCandidates(el)}>
-                      Go to Poll
-                      {console.log(el)}
-                    </button>
-                  </td>
-                  <td>
-                    {" "}
-                    <button onClick={() => props.checkResults(el)}>
-                       Check Results
-                      {console.log(el)}
-                    </button>
-                  </td>
-                </tr>
-              );
-            } else {
-              <tr>
-                <td> no prompts</td>
-              </tr>;
-            }
-          })}
-        </tbody>
-      </Table>
+      <br></br>
+      <Card>
+        <Card.Body>
+          <Table style={{ margin: "0.5vh" }} striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>List of Polls</th>
+              <th>Go to Poll</th>
+              <th>Check Results</th>
+            </tr>
+          </thead>
+          <tbody>
+            {promptList.map((el, index) => {
+              console.log(promptList);
+              if (promptList) {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{el}</td>
+                    <td>
+                      {" "}
+                      <button onClick={() => props.changeCandidates(el)}>
+                        Go to Poll
+                        {console.log(el)}
+                      </button>
+                    </td>
+                    <td>
+                      {" "}
+                      <button onClick={() => props.checkResults(el)}>
+                        Check Results
+                        {console.log(el)}
+                      </button>
+                    </td>
+                  </tr>
+                );
+              } else {
+                <tr>
+                  <td> no prompts</td>
+                </tr>;
+              }
+            })}
+          </tbody>
+        </Table>
+        </Card.Body>
+      </Card>
     </Container>
   );
 };

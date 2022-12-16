@@ -1,6 +1,6 @@
 import { get } from "http";
 import React, { useState, useEffect } from "react";
-import { Table,Container, Row, Col, Button } from "react-bootstrap";
+import { Table,Container, Row, Col, Button, Card } from "react-bootstrap";
 //Simport LoadingCircles from "../assets/loadingcircles.svg";
 
 const ShowResults = (props) => {
@@ -107,28 +107,47 @@ const ShowResults = (props) => {
     alert("Thanks for voting!");
   };
 
+  function winner(candidate1Votes,candidate2Votes)
+  {
+    if(candidate1Votes>candidate2Votes)
+    {
+      return <Row style={{fontSize: "25px"}}><center><b>Candidate 1 won!</b></center></Row> 
+    }
+    else
+    {
+      return <Row style={{fontSize: "25px"}}><center><b>Candidate 2 won!</b></center></Row> 
+    }
+  }
+
   return (
     <Container>
       <Row style={{fontSize: "25px"}}><center><b>{prompt} results</b></center></Row>
-      <Table style={{ margin: "5vh" }} striped bordered hover>
-        <thead>
-          <tr>
-            <th>Candidate</th>
-            <th>Vote Count</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <th>{candidateName1}</th>
-            <th>{candidate1Votes}</th>
-          </tr>
-          <tr>
-            <th>{candidateName2}</th>
-            <th>{candidate2Votes}</th>
-          </tr>
-        </tbody>
-      </Table>  
-      {/* <Row style={{fontSize: "25px"}}><center><b>Candidate 1 won!</b></center></Row>     */}
+      <br></br>
+      <Card>
+        <Card.Body>
+          <center>
+            <Table style={{ margin: "0.5vh" }} striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Candidate</th>
+                  <th>Vote Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>{candidateName1}</th>
+                  <th>{candidate1Votes}</th>
+                </tr>
+                <tr>
+                  <th>{candidateName2}</th>
+                  <th>{candidate2Votes}</th>
+                </tr>
+              </tbody>
+            </Table>  
+          </center>
+        </Card.Body>
+      </Card>
+      <br></br>
     </Container>
     
   );
